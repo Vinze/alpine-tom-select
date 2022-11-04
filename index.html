@@ -8,10 +8,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <style>
+        .ts-wrapper {
+            position: relative;
+        }
+        .ts-control::after {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            content: '›';
+            font-size: 24px;
+            /* font-weight: bold; */
+            transform: rotate(90deg);
+        }
+    </style>
     <title>Tom Select Alpine</title>
 </head>
 <body class="bg-slate-700">
-    <div class="mx-auto my-8 max-w-xl bg-gray-100 p-4 shadow">
+    <div class="mx-auto my-8 max-w-2xl bg-gray-100 p-4 shadow">
         <p class="mb-4">Tom Select is a dynamic, framework agnostic, and lightweight (~16kb gzipped) select UI control. With autocomplete and native-feeling keyboard navigation, it's useful for tagging, contact lists, country selectors, and so on. Tom Select was forked from selectize.js with four main objectives: modernizing the code base, decoupling from jQuery, expanding functionality, and addressing issue backlogs.</p>
         <p class="mb-4">
             Visit the docs at: <a href="https://tom-select.js.org/" class="text-sky-700">https://tom-select.js.org/</a>
@@ -119,7 +133,7 @@
                 <div class="w-1/3">Selected:</div>
                 <div x-text="value" class="w-2/3"></div>
             </div>
-            <div class="mt-4 grid grid-cols-3 gap-4">
+            <div class="mt-4 grid grid-cols-4 gap-4">
                 <button @click="addOption()" class="block w-full p-2 bg-slate-500 text-white rounded">Add myself</button>
                 <button @click="selectOption()" class="block w-full p-2 bg-slate-500 text-white rounded">Select myself</button>
                 <button @click="removeOption()" class="block w-full p-2 bg-slate-500 text-white rounded">Remove myself</button>
