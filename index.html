@@ -14,12 +14,20 @@
         }
         .ts-control::after {
             position: absolute;
-            top: 8px;
-            right: 10px;
+            top: 6px;
+            right: 6px;
             content: '›';
             font-size: 24px;
             /* font-weight: bold; */
             transform: rotate(90deg);
+            line-height: 20px;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            transition: transform .25s;
+        }
+        .dropdown-active .ts-control::after {
+            transform: rotate(270deg);
         }
     </style>
     <title>Tom Select Alpine</title>
@@ -86,11 +94,22 @@
                 this.element.removeOption(41);
             },
             replaceOptions() {
+                this.element.clear();
+                this.element.clearOptions();
 
+                this.element.addOptions([
+                    { value: 'volvo', text: 'Volvo' },
+                    { value: 'vw', text: 'VW' },
+                    { value: 'peugeot', text: 'Peugeot' },
+                    { value: 'tesla', text: 'Tesla' },
+                    { value: 'bmw', text: 'BMW' },
+                ])
             },
             init() {
                 this.$nextTick(() => {
-                    this.element = new TomSelect(this.$refs.select)
+                    this.element = new TomSelect(this.$refs.select, {
+                        maxOptions: null,
+                    })
 
                     this.element.addOptions(this.options);
 
